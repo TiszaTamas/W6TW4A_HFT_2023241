@@ -14,6 +14,7 @@ namespace W6TW4A_HFT_2023241.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MonsterId { get; set; }
 
+        [Required]
         [StringLength(240)]
         public string Name { get; set; }
 

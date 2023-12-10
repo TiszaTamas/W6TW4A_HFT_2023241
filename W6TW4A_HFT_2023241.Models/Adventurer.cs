@@ -16,12 +16,14 @@ namespace W6TW4A_HFT_2023241.Models
 
         public int QuestId { get; set; }
 
+        [Required]
         [StringLength(240)]
         public string Name { get; set; }
 
         [StringLength(240)]
         public string PartyName { get; set; }
 
+        [Required]
         [StringLength(6)]
         public string Rank { get; set; }
 
