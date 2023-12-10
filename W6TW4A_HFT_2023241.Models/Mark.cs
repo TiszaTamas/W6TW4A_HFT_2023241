@@ -14,10 +14,11 @@ namespace W6TW4A_HFT_2023241.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Markid;
 
-        [Required]
         public int Questid;
-
-        [Required]
         public int Monsterid;
+
+        public virtual Quest Quest { get; private set; }
+        public virtual Monster Monster { get; private set; }
+
     }
 }

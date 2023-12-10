@@ -29,5 +29,7 @@ namespace W6TW4A_HFT_2023241.Models
         public string ResidingTown;
 
         public int GoldBalance;
+
+        public virtual Quest Quest { get; set; }
     }
 }

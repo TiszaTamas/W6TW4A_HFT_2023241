@@ -30,5 +30,14 @@ namespace W6TW4A_HFT_2023241.Models
         public string Reward;
 
         public bool Completed;
+
+        public virtual ICollection<Adventurer> Adventurer { get; set; }
+
+        public Quest()
+        {
+            Adventurer = new HashSet<Adventurer>();
+        }
+
+        public ICollection<Monster> Monsters { get; set; }
     }
 }
