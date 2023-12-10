@@ -8,29 +8,29 @@ using System.Threading.Tasks;
 
 namespace W6TW4A_HFT_2023241.Models
 {
-    internal class Monster
+    public class Monster
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        int Monsterid;
+        public int Monsterid;
 
         [Required]
-        int Markid;
+        public int Markid;
 
         [StringLength(240)]
-        string Name;
+        public string Name;
 
         [StringLength(480)]
-        string Appearance;
+        public string Appearance;
 
         [StringLength(6)]
-        string Rank;
+        public string Rank;
 
         [StringLength(240)]
-        string Weakness;
+        public string Weakness;
 
         [StringLength(240)]
-        string UsefulParts;
+        public string UsefulParts;
         
     }
 }

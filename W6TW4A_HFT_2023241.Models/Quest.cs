@@ -8,27 +8,27 @@ using System.Threading.Tasks;
 
 namespace W6TW4A_HFT_2023241.Models
 {
-    internal class Quest
+    public class Quest
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        int Questid;
+        public int Questid;
 
-        int Markid;
-
-        [StringLength(240)]
-        string Objective;
+        public int Markid;
 
         [StringLength(240)]
-        string ClientName;
-
-
-        [StringLength(6)] 
-        string DifficuktyRating;
+        public string Objective;
 
         [StringLength(240)]
-        string Reward;
+        public string ClientName;
 
-        bool Completed;
+
+        [StringLength(6)]
+        public string DifficuktyRating;
+
+        [StringLength(240)]
+        public string Reward;
+
+        public bool Completed;
     }
 }

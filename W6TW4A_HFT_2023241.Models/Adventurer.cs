@@ -8,26 +8,26 @@ using System.Threading.Tasks;
 
 namespace W6TW4A_HFT_2023241.Models
 {
-    internal class Adventurer
+    public class Adventurer
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        int Adventurerid;
+        public int Adventurerid;
 
-        int Questid;
-
-        [StringLength(240)]
-        string Name;
+        public int Questid;
 
         [StringLength(240)]
-        string PartyName;
+        public string Name;
+
+        [StringLength(240)]
+        public string PartyName;
 
         [StringLength(6)]
-        string Rank;
+        public string Rank;
 
         [StringLength(240)]
-        string ResidingTown;
+        public string ResidingTown;
 
-        int GoldBalance;
+        public int GoldBalance;
     }
 }

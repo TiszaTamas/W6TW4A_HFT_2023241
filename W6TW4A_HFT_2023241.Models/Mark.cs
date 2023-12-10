@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace W6TW4A_HFT_2023241.Models
 {
-    internal class Mark
+    public class Mark
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        int Markid;
+        public int Markid;
 
         [Required]
-        int Questid;
+        public int Questid;
 
         [Required]
-        int Monsterid;
+        public int Monsterid;
     }
 }
