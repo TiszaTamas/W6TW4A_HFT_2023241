@@ -9,7 +9,7 @@ using W6TW4A_HFT_2023241.Models;
 
 namespace W6TW4A_HFT_2023241.Repository
 {
-    internal class AdventurerGuildDbContext : DbContext
+    public class AdventurerGuildDbContext : DbContext
     {
         public DbSet<Quest> Quests { get; set; }
         public DbSet<Adventurer> Adventurers { get; set; }
@@ -25,8 +25,10 @@ namespace W6TW4A_HFT_2023241.Repository
             if (!builder.IsConfigured)
             {
 //                string conn = @"Data Source=(LocalDB)\MSSQLLocalDB;
-//AttachDbFilename=|DataDirectory|\movies.mdf;Integrated Security=True;MultipleActiveResultSets=true";
+//AttachDbFilename=|DataDirectory|\TestDatabase.mdf;Integrated Security=True;MultipleActiveResultSets=true";
+
                 builder
+                    //.UseSqlServer(conn)
                 .UseInMemoryDatabase("adventurersguild")
                 .UseLazyLoadingProxies();
             }
@@ -36,18 +38,30 @@ namespace W6TW4A_HFT_2023241.Repository
         {
             modelBuilder.Entity<Adventurer>(adventurer => adventurer
             .HasOne(adventurer => adventurer.Quest)
-            .WithMany(quest=> quest.Adventurer)
-            .HasForeignKey(adventurer=>adventurer.Questid)
+            .WithMany(quest=> quest.Adventurers)
+            .HasForeignKey(adventurer=>adventurer.QuestId)
             .OnDelete(DeleteBehavior.Cascade));
 
             modelBuilder.Entity<Quest>()
                 .HasMany(quest => quest.Monsters)
                 .WithMany(monster => monster.Quests)
                 .UsingEntity<Mark>(
-                role => role.HasOne(role => role.Monster)
-                    .WithMany().HasForeignKey(role => role.Monsterid).OnDelete(DeleteBehavior.Cascade),
-                role => role.HasOne(role => role.Quest)
-                    .WithMany().HasForeignKey(role => role.Questid).OnDelete(DeleteBehavior.Cascade));
+                mark => mark.HasOne(mark => mark.Monster)
+                    .WithMany().HasForeignKey(role => role.MonsterId).OnDelete(DeleteBehavior.Cascade),
+                mark => mark.HasOne(mark => mark.Quest)
+                    .WithMany().HasForeignKey(role => role.QuestId).OnDelete(DeleteBehavior.Cascade));
+
+            modelBuilder.Entity<Mark>()
+                .HasOne(mark => mark.Quest)
+                .WithMany(q=>q.Marks)
+                .HasForeignKey(m=>m.QuestId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Mark>()
+                .HasOne(mark => mark.Monster)
+                .WithMany(q => q.Marks)
+                .HasForeignKey(m => m.MonsterId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Monster>().HasData(new Monster[]
             {
@@ -87,9 +101,11 @@ namespace W6TW4A_HFT_2023241.Repository
             });
         }
         //string[] split = a.Split("/");
-        //Markid = int.Parse(split[0]);
-        //Questid = int.Parse(split[1]);
-        //Monsterid = int.Parse(split[2]);
-
+        //AdventurerId = int.Parse(split[0]);
+        //QuestId = int.Parse(split[1]);
+        //Name = split[2];
+        //    PartyName = split[3];
+        //    Rank = split[4];
+        //    ResidingTown = split[5];
     }
 }

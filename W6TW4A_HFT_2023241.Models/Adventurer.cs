@@ -12,21 +12,21 @@ namespace W6TW4A_HFT_2023241.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Adventurerid;
+        public int AdventurerId { get; set; }
 
-        public int Questid;
-
-        [StringLength(240)]
-        public string Name;
+        public int QuestId { get; set; }
 
         [StringLength(240)]
-        public string PartyName;
+        public string Name { get; set; }
+
+        [StringLength(240)]
+        public string PartyName { get; set; }
 
         [StringLength(6)]
-        public string Rank;
+        public string Rank { get; set; }
 
         [StringLength(240)]
-        public string ResidingTown;
+        public string ResidingTown { get; set; }
 
         public virtual Quest Quest { get; set; }
 
@@ -38,8 +38,8 @@ namespace W6TW4A_HFT_2023241.Models
         public Adventurer(string a)
         {
             string[] split=a.Split("/");
-            Adventurerid = int.Parse(split[0]);
-            Questid = int.Parse(split[1]);
+            AdventurerId = int.Parse(split[0]);
+            QuestId = int.Parse(split[1]);
             Name = split[2];
             PartyName = split[3];
             Rank = split[4];

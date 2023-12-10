@@ -12,24 +12,25 @@ namespace W6TW4A_HFT_2023241.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Monsterid;
+        public int MonsterId { get; set; }
 
         [StringLength(240)]
-        public string Name;
+        public string Name { get; set; }
 
         [StringLength(480)]
-        public string Appearance;
+        public string Appearance { get; set; }
 
         [StringLength(8)]
-        public string Rank;
+        public string Rank { get; set; }
 
         [StringLength(240)]
-        public string Weakness;
+        public string Weakness { get; set; }
 
         [StringLength(240)]
-        public string UsefulParts;
+        public string UsefulParts { get; set; }
 
         public virtual ICollection<Quest> Quests { get; set; }
+        public virtual ICollection<Mark> Marks { get; set; }
 
         public Monster()
         {
@@ -39,7 +40,7 @@ namespace W6TW4A_HFT_2023241.Models
         public Monster(string a)
         {
             string[] split = a.Split("/");
-            Monsterid = int.Parse(split[0]);
+            MonsterId = int.Parse(split[0]);
             Name = split[1];
             Rank = split[2];
             Appearance = split[3];

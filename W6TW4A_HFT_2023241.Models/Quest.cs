@@ -12,36 +12,36 @@ namespace W6TW4A_HFT_2023241.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Questid;
+        public int QuestId { get; set; }
 
         [StringLength(240)]
-        public string Objective;
+        public string Objective { get; set; }
 
         [StringLength(6)]
-        public string DifficultyRating;
+        public string DifficultyRating { get; set; }
 
         [StringLength(240)]
-        public string ClientName;
-
+        public string ClientName { get; set; }
 
         [StringLength(240)]
-        public string Reward;
+        public string Reward { get; set; }
 
-        public bool Completed;
+        public bool Completed { get; set; }
 
-        public virtual ICollection<Adventurer> Adventurer { get; set; }
+        public virtual ICollection<Adventurer> Adventurers { get; set; }
 
         public Quest()
         {
-            Adventurer = new HashSet<Adventurer>();
+            Adventurers = new HashSet<Adventurer>();
         }
 
-        public ICollection<Monster> Monsters { get; set; }
+        public virtual ICollection<Monster> Monsters { get; set; }
+        public virtual ICollection<Mark> Marks { get; set; }
 
         public Quest(string a, bool b)
         {
             string[] split=a.Split("/");
-            Questid = int.Parse(split[0]);
+            QuestId = int.Parse(split[0]);
             Objective = split[1];
             DifficultyRating = split[2];
             ClientName = split[3];

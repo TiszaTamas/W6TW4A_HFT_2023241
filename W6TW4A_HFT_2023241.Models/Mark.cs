@@ -13,10 +13,10 @@ namespace W6TW4A_HFT_2023241.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Markid;
+        public int MarkId { get; set; }
 
-        public int Questid;
-        public int Monsterid;
+        public int QuestId { get; set; }
+        public int MonsterId { get; set; }
 
         public virtual Quest Quest { get; private set; }
         public virtual Monster Monster { get; private set; }
@@ -24,9 +24,9 @@ namespace W6TW4A_HFT_2023241.Models
         public Mark(string a)
         {
             string[] split = a.Split("/");
-            Markid = int.Parse(split[0]);
-            Questid = int.Parse(split[1]);
-            Monsterid = int.Parse(split[2]);
+            MarkId = int.Parse(split[0]);
+            QuestId = int.Parse(split[1]);
+            MonsterId = int.Parse(split[2]);
         }
 
         public Mark()
