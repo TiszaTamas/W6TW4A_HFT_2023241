@@ -8,5 +8,13 @@ namespace W6TW4A_HFT_2023241.Models
 {
     internal class Monster
     {
+        int Monsterid;
+        int Markid;
+        string Name;
+        string Appearance;
+        int Rank;
+        string Weakness;
+        string UsefulParts;
+        
     }
 }

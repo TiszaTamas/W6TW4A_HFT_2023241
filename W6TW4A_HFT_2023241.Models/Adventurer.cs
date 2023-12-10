@@ -8,5 +8,12 @@ namespace W6TW4A_HFT_2023241.Models
 {
     internal class Adventurer
     {
+        int Adventurerid;
+        int Questid;
+        string Name;
+        string PartyName;
+        int Rank;
+        string ResidingTown;
+        int GoldBalance;
     }
 }
