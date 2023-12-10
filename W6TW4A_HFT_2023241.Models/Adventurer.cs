@@ -31,5 +31,22 @@ namespace W6TW4A_HFT_2023241.Models
         public int GoldBalance;
 
         public virtual Quest Quest { get; set; }
+
+        public Adventurer()
+        {
+            
+        }
+
+        public Adventurer(string a)
+        {
+            string[] split=a.Split('/');
+            Adventurerid = int.Parse(split[0]);
+            Questid = int.Parse(split[1]);
+            Name = split[2];
+            PartyName = split[3];
+            Rank = split[4];
+            ResidingTown = split[5];
+            GoldBalance = int.Parse(split[6]);
+        }
     }
 }

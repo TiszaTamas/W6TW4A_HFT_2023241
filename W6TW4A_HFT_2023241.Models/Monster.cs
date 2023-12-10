@@ -33,6 +33,23 @@ namespace W6TW4A_HFT_2023241.Models
         public string UsefulParts;
 
         public virtual ICollection<Quest> Quests { get; set; }
-        
+
+        public Monster()
+        {
+            
+        }
+
+        public Monster(string a)
+        {
+            string[] split = a.Split("/");
+            Monsterid = int.Parse(split[0]);
+            Markid = int.Parse(split[1]);
+            Name = split[2];
+            Appearance = split[3];
+            Rank = split[4];
+            Weakness = split[5];
+            UsefulParts = split[6];
+        }
+
     }
 }

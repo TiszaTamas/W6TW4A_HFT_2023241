@@ -19,12 +19,12 @@ namespace W6TW4A_HFT_2023241.Models
         [StringLength(240)]
         public string Objective;
 
+        [StringLength(6)]
+        public string DifficultyRating;
+
         [StringLength(240)]
         public string ClientName;
 
-
-        [StringLength(6)]
-        public string DifficuktyRating;
 
         [StringLength(240)]
         public string Reward;
@@ -39,5 +39,18 @@ namespace W6TW4A_HFT_2023241.Models
         }
 
         public ICollection<Monster> Monsters { get; set; }
+
+        public Quest(string a, bool b)
+        {
+            string[] split=a.Split("/");
+            Questid = int.Parse(split[0]);
+            Markid = int.Parse(split[1]);
+            Objective = split[2];
+            DifficultyRating = split[3];
+            ClientName = split[4];
+            Reward = split[5];
+            Completed = b;
+        }
+
     }
 }
