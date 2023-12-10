@@ -1,7 +1,7 @@
 ﻿using System;
-using W6TW4A_HFT_2023241.Repository;
 using W6TW4A_HFT_2023241.Models;
 using System.Linq;
+using W6TW4A_HFT_2023241.Repository.Database;
 
 namespace TestConsoleApp
 {
@@ -10,10 +10,13 @@ namespace TestConsoleApp
         static void Main(string[] args)
         {
             AdventurerGuildDbContext agcx = new AdventurerGuildDbContext();
-            var abc = agcx.Monsters.Select(x => x.Name);
-            foreach (var item in abc)
+            foreach (var item in agcx.Quests)
             {
-                Console.WriteLine(item);
+                Console.WriteLine(item.Objective);
+                foreach (var mark in item.Marks)
+                {
+                    Console.WriteLine("\t"+mark.Monster.Name);
+                }
             }
         }
     }
