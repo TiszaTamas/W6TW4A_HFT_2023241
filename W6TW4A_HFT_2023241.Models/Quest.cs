@@ -14,8 +14,6 @@ namespace W6TW4A_HFT_2023241.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Questid;
 
-        public int Markid;
-
         [StringLength(240)]
         public string Objective;
 
@@ -44,11 +42,10 @@ namespace W6TW4A_HFT_2023241.Models
         {
             string[] split=a.Split("/");
             Questid = int.Parse(split[0]);
-            Markid = int.Parse(split[1]);
-            Objective = split[2];
-            DifficultyRating = split[3];
-            ClientName = split[4];
-            Reward = split[5];
+            Objective = split[1];
+            DifficultyRating = split[2];
+            ClientName = split[3];
+            Reward = split[4];
             Completed = b;
         }
 

@@ -14,16 +14,13 @@ namespace W6TW4A_HFT_2023241.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Monsterid;
 
-        [Required]
-        public int Markid;
-
         [StringLength(240)]
         public string Name;
 
         [StringLength(480)]
         public string Appearance;
 
-        [StringLength(6)]
+        [StringLength(8)]
         public string Rank;
 
         [StringLength(240)]
@@ -43,12 +40,11 @@ namespace W6TW4A_HFT_2023241.Models
         {
             string[] split = a.Split("/");
             Monsterid = int.Parse(split[0]);
-            Markid = int.Parse(split[1]);
-            Name = split[2];
+            Name = split[1];
+            Rank = split[2];
             Appearance = split[3];
-            Rank = split[4];
-            Weakness = split[5];
-            UsefulParts = split[6];
+            Weakness = split[4];
+            UsefulParts = split[5];
         }
 
     }
