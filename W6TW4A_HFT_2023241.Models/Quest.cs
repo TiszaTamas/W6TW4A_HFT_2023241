@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace W6TW4A_HFT_2023241.Models
@@ -29,6 +30,7 @@ namespace W6TW4A_HFT_2023241.Models
 
         public bool Completed { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Adventurer> Adventurers { get; set; }
 
         public Quest()
@@ -36,7 +38,9 @@ namespace W6TW4A_HFT_2023241.Models
             Adventurers = new HashSet<Adventurer>();
         }
 
+        [JsonIgnore]
         public virtual ICollection<Monster> Monsters { get; set; }
+
         public virtual ICollection<Mark> Marks { get; set; }
 
         public Quest(string a, bool b)

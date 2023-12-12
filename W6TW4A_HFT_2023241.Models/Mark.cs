@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace W6TW4A_HFT_2023241.Models
@@ -18,7 +19,9 @@ namespace W6TW4A_HFT_2023241.Models
         public int QuestId { get; set; }
         public int MonsterId { get; set; }
 
+        [JsonIgnore]
         public virtual Quest Quest { get; private set; }
+
         public virtual Monster Monster { get; private set; }
 
         public Mark(string a)
