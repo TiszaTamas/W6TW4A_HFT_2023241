@@ -36,10 +36,9 @@ namespace W6TW4A_HFT_2023241.Test
         public void IsAvailableExceptionTest()
         {
             //Setup
-            var adventurer=logic.ReadAll().First();
             //Act
             //Assert
-            Assert.That(() => logic.IsAvailable(adventurer.AdventurerId), Throws.Nothing);
+            Assert.That(() => logic.IsAvailable(0), Throws.ArgumentException);
         }
 
         [Test]
@@ -54,7 +53,7 @@ namespace W6TW4A_HFT_2023241.Test
         [Test]
         public void CreateAdventurerTest()
         {
-            var adventurer = new Adventurer("4/3/Bob/Black Hand/C4/Shadow's Edge");
+            var adventurer = new Adventurer("4/3/Bobos/Black Hand/C4/Shadow's Edge");
             try
             {
                 logic.Create(adventurer);

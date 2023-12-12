@@ -58,9 +58,10 @@ namespace W6TW4A_HFT_2023241.Logic.LogicModels
 
         public bool IsAvailable(int id)
         {
-            if (id <0)
+            if (id > 0)
             {
-                return this.repository.Read(id).Quest.Completed;
+                var a = this.repository.Read(id).Quest.Completed;
+                return a;
             }
             else
             {
