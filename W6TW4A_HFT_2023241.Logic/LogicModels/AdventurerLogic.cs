@@ -58,13 +58,27 @@ namespace W6TW4A_HFT_2023241.Logic.LogicModels
 
         public bool IsAvailable(int id)
         {
-            return this.repository.Read(id).Quest.Completed;
+            if (id <0)
+            {
+                return this.repository.Read(id).Quest.Completed;
+            }
+            else
+            {
+                throw new ArgumentException("Id provided is wrong");
+            }
         }
 
         public IEnumerable<Adventurer> AllAvailableAdventurersInLocation(string townname)
         {
-            var fromtown =this.repository.ReadAll().Where(x=> x.ResidingTown.Equals(townname));
-            return fromtown.Where(x=>x.Quest.Completed);
+            if (!townname.IsNullOrEmpty())
+            {
+                var fromtown = this.repository.ReadAll().Where(x => x.ResidingTown.Equals(townname));
+                return fromtown.Where(x => x.Quest.Completed);
+            }
+            else
+            {
+                throw new ArgumentNullException("Town name is empty");
+            }
         }
     }
 }
