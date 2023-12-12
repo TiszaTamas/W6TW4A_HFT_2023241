@@ -33,7 +33,7 @@ namespace W6TW4A_HFT_2023241.Logic.LogicModels
                 }
                 else
                 {
-                    var c = rank.OrderBy(x => x);
+                    var c = rank.OrderByDescending(x => x);
                     if (rank[0].Equals(c.First()) && !rank[1].Equals("S"))
                     {
                         return 1;
