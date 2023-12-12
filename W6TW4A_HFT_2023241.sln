@@ -26,12 +26,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Others", "Others", "{ED83C3
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsoleApp", "TestConsoleApp\TestConsoleApp.csproj", "{B4B88A71-395D-4871-B391-4AE8C36725EB}"
-	ProjectSection(ProjectDependencies) = postProject
-		{0F225029-5494-4F19-B24C-B03DF2676E7F} = {0F225029-5494-4F19-B24C-B03DF2676E7F}
-		{5F5B6043-6767-4EF2-9E33-CB44768EB0ED} = {5F5B6043-6767-4EF2-9E33-CB44768EB0ED}
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,10 +56,6 @@ Global
 		{606CEAA7-7513-41EE-BA51-E7E506C88825}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{606CEAA7-7513-41EE-BA51-E7E506C88825}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{606CEAA7-7513-41EE-BA51-E7E506C88825}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B4B88A71-395D-4871-B391-4AE8C36725EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B4B88A71-395D-4871-B391-4AE8C36725EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B4B88A71-395D-4871-B391-4AE8C36725EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B4B88A71-395D-4871-B391-4AE8C36725EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,7 +67,6 @@ Global
 		{5F5B6043-6767-4EF2-9E33-CB44768EB0ED} = {70AA1EC8-1FB4-4E60-8CA1-F96BC2347647}
 		{5FCEE102-3154-4C88-878B-6914CB09A799} = {70AA1EC8-1FB4-4E60-8CA1-F96BC2347647}
 		{606CEAA7-7513-41EE-BA51-E7E506C88825} = {70AA1EC8-1FB4-4E60-8CA1-F96BC2347647}
-		{B4B88A71-395D-4871-B391-4AE8C36725EB} = {70AA1EC8-1FB4-4E60-8CA1-F96BC2347647}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {707060F4-D767-47AC-B1D7-9925658F265A}
