@@ -63,6 +63,51 @@ namespace W6TW4A_HFT_2023241.Test
             }
             mockAdventurerRepo.Verify(r => r.Create(adventurer), Times.Once);
         }
+
+        [Test]
+        public void RankComparerTester()
+        {
+            //Setup
+            string a = "B5";
+            string b = "C1";
+            RankComparer rc= new RankComparer();
+
+            //Act
+            int high = rc.Compare(a, b);
+
+            //Assert
+            Assert.AreEqual(1, high);
+        }
+
+        [Test]
+        public void RankComparerSameRankTester()
+        {
+            //Setup
+            string a = "B5";
+            string b = "B2";
+            RankComparer rc = new RankComparer();
+
+            //Act
+            int high = rc.Compare(a, b);
+
+            //Assert
+            Assert.AreEqual(1, high);
+        }
+
+        [Test]
+        public void RankComparerSameTester()
+        {
+            //Setup
+            string a = "B2";
+            string b = "B2";
+            RankComparer rc = new RankComparer();
+
+            //Act
+            int high = rc.Compare(a, b);
+
+            //Assert
+            Assert.AreEqual(1, high);
+        }
     }
 
 }

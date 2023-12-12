@@ -63,6 +63,5 @@ namespace W6TW4A_HFT_2023241.Test
             }
             mockQuestRepo.Verify(r => r.Create(quest), Times.Once);
         }
-    
     }
 }
