@@ -35,12 +35,19 @@ namespace W6TW4A_HFT_2023241.Logic.LogicModels
         }
         public Quest Read(int id)
         {
-            var movie = this.repository.Read(id);
-            if (movie == null)
+            if (id>0)
             {
-                throw new ArgumentException("Quest does not exists.");
+                var movie = this.repository.Read(id);
+                if (movie == null)
+                {
+                    throw new ArgumentException("Quest does not exists.");
+                }
+                return movie;
             }
-            return movie;
+            else
+            {
+                throw new ArgumentException("Wrong Id.");
+            }
         }
 
         public void Delete(int id)
@@ -58,8 +65,15 @@ namespace W6TW4A_HFT_2023241.Logic.LogicModels
 
         public Adventurer HighestAdventurerOnQuest(int id)
         {
-            var quest = this.repository.Read(id);
-            return quest.Adventurers.OrderByDescending(y=> y.Rank,new RankComparer()).First();
+            if (id>0)
+            {
+                var quest = this.repository.Read(id);
+                return quest.Adventurers.OrderByDescending(y => y.Rank, new RankComparer()).First();
+            }
+            else
+            {
+                throw new ArgumentException("Wrong Id.");
+            }
         }
 
         public IEnumerable<Adventurer> AdventurersForQuest(int id)
