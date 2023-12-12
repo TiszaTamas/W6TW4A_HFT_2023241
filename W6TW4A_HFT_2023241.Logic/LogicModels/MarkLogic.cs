@@ -53,8 +53,15 @@ namespace W6TW4A_HFT_2023241.Logic.LogicModels
 
         public IEnumerable<Quest> MonsterFinder(int monsterid)
         {
-            var quests = this.repository.ReadAll().Where(x => x.MonsterId == monsterid).Select(x=>x.Quest);
-            return quests;
+            if (monsterid < 1)
+            {
+                throw new ArgumentException("Wrong Id");
+            }
+            else
+            {
+                var quests = this.repository.ReadAll().Where(x => x.MonsterId == monsterid).Select(x => x.Quest);
+                return quests;
+            }
         }
     }
 }
