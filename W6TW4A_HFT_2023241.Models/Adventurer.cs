@@ -46,8 +46,28 @@ namespace W6TW4A_HFT_2023241.Models
             PartyName = split[3];
             Rank = split[4];
             ResidingTown = split[5];
+        }
+        public override bool Equals(object obj)
+        {
+            Adventurer a = obj as Adventurer;
+            if (a == null)
+            {
+                return false;
+            }
+            else
+            {
+                return this.Name == a.Name
+                    && this.AdventurerId == a.AdventurerId
+                    && this.QuestId == a.QuestId
+                    && this.ResidingTown==a.ResidingTown
+                    && this.Rank==a.Rank
+                    && this.PartyName == a.PartyName;
+            }
+        }
 
-
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(this.Name, this.PartyName, this.AdventurerId, this.QuestId, this.ResidingTown,this.Rank);
         }
     }
 }
