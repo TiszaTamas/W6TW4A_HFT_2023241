@@ -56,6 +56,15 @@ namespace W6TW4A_HFT_2023241.Logic.LogicModels
             this.repository.Update(item);
         }
 
+        public bool IsAvailable(int id)
+        {
+            return this.repository.Read(id).Quest.Completed;
+        }
 
+        public IEnumerable<Adventurer> AllAvailableAdventurersInLocation(string townname)
+        {
+            var fromtown =this.repository.ReadAll().Where(x=> x.ResidingTown.Equals(townname));
+            return fromtown.Where(x=>x.Quest.Completed);
+        }
     }
 }

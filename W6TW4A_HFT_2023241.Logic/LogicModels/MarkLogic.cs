@@ -51,6 +51,10 @@ namespace W6TW4A_HFT_2023241.Logic.LogicModels
             this.repository.Update(item);
         }
 
-
+        public IEnumerable<Quest> MonsterFinder(int monsterid)
+        {
+            var quests = this.repository.ReadAll().Where(x => x.MonsterId == monsterid).Select(x=>x.Quest);
+            return quests;
+        }
     }
 }

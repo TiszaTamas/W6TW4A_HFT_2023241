@@ -12,6 +12,7 @@ namespace W6TW4A_HFT_2023241.Logic.LogicModels
     public class QuestLogic : IQuestLogic
     {
         IRepository<Quest> repository;
+        IRepository<Adventurer> adventurerRepository;
 
         public QuestLogic(IRepository<Quest> repository)
         {
@@ -55,6 +56,17 @@ namespace W6TW4A_HFT_2023241.Logic.LogicModels
             this.repository.Update(item);
         }
 
+        public Adventurer HighestAdventurerOnQuest(int id)
+        {
+            var quest = this.repository.Read(id);
+            return quest.Adventurers.OrderByDescending(y=> y.Rank,new RankComparer()).First();
+        }
 
+        public IEnumerable<Adventurer> AdventurersForQuest(int id)
+        {
+            var questRank = this.repository.Read(id).DifficultyRating[0].ToString();
+            var inRankAdventurers = adventurerRepository.ReadAll().Where(x=> x.Rank[0].ToString().Equals(questRank));
+            return inRankAdventurers;
+        }
     }
 }
