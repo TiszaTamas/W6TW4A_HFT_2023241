@@ -14,5 +14,7 @@ namespace W6TW4A_HFT_2023241.Logic.LogicInterfaces
         Quest Read(int id);
         IQueryable<Quest> ReadAll();
         void Update(Quest item);
+        public IEnumerable<Adventurer> AdventurersForQuest(int id);
+        public Adventurer HighestAdventurerOnQuest(int id);
     }
 }

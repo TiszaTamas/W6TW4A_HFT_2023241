@@ -15,5 +15,8 @@ namespace W6TW4A_HFT_2023241.Logic.LogicInterfaces
         Adventurer Read(int id);
         IQueryable<Adventurer> ReadAll();
         void Update(Adventurer item);
+        public bool IsAvailable(int id);
+        public IEnumerable<Adventurer> AllAvailableAdventurersInLocation(string townname);
+
     }
 }

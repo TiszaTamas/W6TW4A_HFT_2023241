@@ -94,7 +94,7 @@ namespace W6TW4A_HFT_2023241.Repository.Database
 
             modelBuilder.Entity<Adventurer>().HasData(new Adventurer[]
             {
-                new Adventurer("1/2/Garrick Stoneforge/Hallowed Guardians/E3/Ironhold Stronghold"),
+                new Adventurer("1/2/Garrick Stoneforge/Hallowed Guardians/E3/Stronghold"),
                 new Adventurer("2/2/Sylas Emberbane/Hallowed Guardians/D1/Emberfall Keep"),
                 new Adventurer("3/1/Roderick Shadowblade/Nightfall Rogues/F4/Shadow's Edge"),
                 new Adventurer("4/3/Kael Sunfire/Sunfire Crusaders/D6/Radiant Citadel"),

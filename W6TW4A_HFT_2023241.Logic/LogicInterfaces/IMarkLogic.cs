@@ -14,5 +14,6 @@ namespace W6TW4A_HFT_2023241.Logic.LogicInterfaces
         Mark Read(int id);
         IQueryable<Mark> ReadAll();
         void Update(Mark item);
+        public IEnumerable<Quest> MonsterFinder(int monsterid);
     }
 }

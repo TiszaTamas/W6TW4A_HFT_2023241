@@ -87,7 +87,7 @@ namespace W6TW4A_HFT_2023241.Client
             {
                 Console.Write("Enter Quest's id to update: ");
                 int id = int.Parse(Console.ReadLine());
-                Quest one = rest.Get<Quest>(id, "monster");
+                Quest one = rest.Get<Quest>(id, "quest");
                 Console.Write($"New objective [old: {one.Objective}]: ");
                 string objective = Console.ReadLine();
                 one.Objective = objective;
@@ -116,6 +116,94 @@ namespace W6TW4A_HFT_2023241.Client
             }
         }
 
+        static void IsAvailable(string entity)
+        {
+            Console.WriteLine("Enter Adventurer's id to see if they are available");
+            int id = int.Parse(Console.ReadLine());
+            bool a = rest.Get<bool>(id, "noncrud/IsAvailable");
+            if (a)
+            {
+                Console.WriteLine("They are available");
+            }
+            else
+            {
+                Console.WriteLine("They are not available");
+            }
+            Console.ReadKey();
+        }
+
+        static void AllAvailableAdventurersInLocation(string entity)
+        {
+            Console.WriteLine("Enter Town name, to see available adventurers");
+            string id = Console.ReadLine();
+            string nothing="";
+            List<Adventurer> adventurers = rest.Get<Adventurer>(id, "noncrud/AllAvailableAdventurersInLocation", nothing);
+            Console.WriteLine("Available adventurers:");
+            foreach (var item in adventurers)
+            {
+                Console.WriteLine(item.Name);
+            }
+            Console.ReadKey();
+        }
+
+
+        static void AdventurersForQuest(string entity)
+        {
+            Console.WriteLine("Eneter Quest Id to see same rank Adventrers");
+            int id =int.Parse( Console.ReadLine());
+            int nothing=0;
+            List<Adventurer> adventurers = rest.Get<Adventurer>(id, "noncrud/AdventurersForQuest", nothing);
+            Console.WriteLine("In Rank Adventurers:");
+            foreach (var item in adventurers)
+            {
+                Console.WriteLine(item.Name);
+            }
+            Console.ReadKey();
+        }
+
+        static void HighestAdventurerOnQuest(string entity)
+        {
+            Console.WriteLine("Eneter Quest Id to see the highest Adventurer in the Quest");
+            int id = int.Parse(Console.ReadLine());
+            Adventurer adventurer = rest.Get<Adventurer>(id, "noncrud/HighestAdventurerOnQuest");
+            Console.WriteLine("Highest Rank Adventurer:");
+            Console.WriteLine(adventurer.Name);
+            Console.ReadKey();
+
+        }
+
+        static void MonsterFinder(string entityd)
+        {
+            Console.WriteLine("Eneter Monster Id to search quests, with the same monster");
+            int id = int.Parse(Console.ReadLine());
+            int nothing = 0;
+            List<Quest> adventurers = rest.Get<Quest>(id, "noncrud/MonsterFinder", nothing);
+            Console.WriteLine("Desired Quests:");
+            foreach (var item in adventurers)
+            {
+                Console.WriteLine(item.QuestId + " ID: " +item.Objective);
+            }
+            Console.ReadKey();
+        }
+
+        //[HttpGet("{id}")]
+        //public IEnumerable<Adventurer> AdventurersForQuest(int id)
+        //{
+        //    return this.qlogic.AdventurersForQuest(id);
+        //}
+
+        //[HttpGet("{id}")]
+        //public Adventurer HighestAdventurerOnQuest(int id)
+        //{
+        //    return this.qlogic.HighestAdventurerOnQuest(id);
+        //}
+
+        //[HttpGet("{id}")]
+        //public IEnumerable<Quest> MonsterFinder(int monsterid)
+        //{
+        //    return this.mlogic.MonsterFinder(monsterid);
+        //}
+
         static void Main(string[] args)
         {
             rest = new RestService("http://localhost:8351/", "adventurersguild");
@@ -125,6 +213,7 @@ namespace W6TW4A_HFT_2023241.Client
                 .Add("Create", () => Create("Monster"))
                 .Add("Delete", () => Delete("Monster"))
                 .Add("Update", () => Update("Monster"))
+                .Add("MonsterFinder", () => MonsterFinder("Monster"))
                 .Add("Exit", ConsoleMenu.Close);
 
             var adventurerSubMenu = new ConsoleMenu(args, level: 1)
@@ -132,6 +221,8 @@ namespace W6TW4A_HFT_2023241.Client
                 .Add("Create", () => Create("Adventurer"))
                 .Add("Delete", () => Delete("Adventurer"))
                 .Add("Update", () => Update("Adventurer"))
+                .Add("IsAvailable", ()=> IsAvailable("Adventurer"))
+                .Add("AllAvailableAdventurersInLocation", ()=> AllAvailableAdventurersInLocation("Adventurer"))
                 .Add("Exit", ConsoleMenu.Close);
 
             var questSubMenu = new ConsoleMenu(args, level: 1)
@@ -139,13 +230,15 @@ namespace W6TW4A_HFT_2023241.Client
                 .Add("Create", () => Create("Quest"))
                 .Add("Delete", () => Delete("Quest"))
                 .Add("Update", () => Update("Quest"))
+                .Add("AdventurersForQuest", () => AdventurersForQuest("Adventurer"))
+                .Add("HighestAdventurerOnQuest", () => HighestAdventurerOnQuest("Adventurer"))
                 .Add("Exit", ConsoleMenu.Close);
 
 
             var menu = new ConsoleMenu(args, level: 0)
                 .Add("Quests", () => questSubMenu.Show())
                 .Add("Monsters", () => monsterSubMenu.Show())
-                .Add("Marks", () => adventurerSubMenu.Show())
+                .Add("Adventurers", () => adventurerSubMenu.Show())
                 .Add("Exit", ConsoleMenu.Close);
 
             menu.Show();

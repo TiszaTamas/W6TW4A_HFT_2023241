@@ -14,9 +14,10 @@ namespace W6TW4A_HFT_2023241.Logic.LogicModels
         IRepository<Quest> repository;
         IRepository<Adventurer> adventurerRepository;
 
-        public QuestLogic(IRepository<Quest> repository)
+        public QuestLogic(IRepository<Quest> repository, IRepository<Adventurer> arepository)
         {
             this.repository = repository;
+            this.adventurerRepository = arepository;
         }
         public void Create(Quest item)
         {
@@ -79,7 +80,8 @@ namespace W6TW4A_HFT_2023241.Logic.LogicModels
         public IEnumerable<Adventurer> AdventurersForQuest(int id)
         {
             var questRank = this.repository.Read(id).DifficultyRating[0].ToString();
-            var inRankAdventurers = adventurerRepository.ReadAll().Where(x=> x.Rank[0].ToString().Equals(questRank));
+
+           var inRankAdventurers = adventurerRepository.ReadAll().Where(x=> x.Rank[0].ToString().Equals(questRank));
             return inRankAdventurers;
         }
     }

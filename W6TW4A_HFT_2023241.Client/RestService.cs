@@ -74,6 +74,55 @@ namespace W6TW4A_HFT_2023241.Client
             return items;
         }
 
+        public List<T> Get<T>(int id, string endpoint, int nothing)
+        {
+            List<T> items = new List<T>();
+            HttpResponseMessage response = client.GetAsync(endpoint + "/" + id.ToString()).GetAwaiter().GetResult();
+            if (response.IsSuccessStatusCode)
+            {
+                items = response.Content.ReadAsAsync<List<T>>().GetAwaiter().GetResult();
+            }
+            else
+            {
+                var error = response.Content.ReadAsAsync<RestExceptionInfo>().GetAwaiter().GetResult();
+                throw new ArgumentException(error.Msg);
+            }
+            return items;
+        }
+
+
+        public List<T> Get<T>(string id, string endpoint, string nothing)
+        {
+            List<T> items = new List<T>();
+            HttpResponseMessage response = client.GetAsync(endpoint + "/" + id).GetAwaiter().GetResult();
+            if (response.IsSuccessStatusCode)
+            {
+                items = response.Content.ReadAsAsync<List<T>>().GetAwaiter().GetResult();
+            }
+            else
+            {
+                var error = response.Content.ReadAsAsync<RestExceptionInfo>().GetAwaiter().GetResult();
+                throw new ArgumentException(error.Msg);
+            }
+            return items;
+        }
+
+        public List<T> GetSingle<T>(string id, string endpoint)
+        {
+            List<T> items = new List<T>();
+            HttpResponseMessage response = client.GetAsync(endpoint + "/" + id.ToString()).GetAwaiter().GetResult();
+            if (response.IsSuccessStatusCode)
+            {
+                items = response.Content.ReadAsAsync<List<T>>().GetAwaiter().GetResult();
+            }
+            else
+            {
+                var error = response.Content.ReadAsAsync<RestExceptionInfo>().GetAwaiter().GetResult();
+                throw new ArgumentException(error.Msg);
+            }
+            return items;
+        }
+
         public T GetSingle<T>(string endpoint)
         {
             T item = default(T);
