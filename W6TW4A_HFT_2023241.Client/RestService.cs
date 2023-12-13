@@ -27,11 +27,13 @@ namespace W6TW4A_HFT_2023241.Client
         {
             try
             {
-                WebClient wc = new WebClient();
-                wc.DownloadData(url);
+                HttpClient cl= new HttpClient();
+                cl.Timeout = TimeSpan.FromSeconds(1);
+                cl.BaseAddress= new Uri(url);
+                var a =Task.Run(()=> cl.GetAsync("Adventurer")).Result;
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
                 return false;
             }
