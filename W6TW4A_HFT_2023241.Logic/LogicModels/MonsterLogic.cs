@@ -23,10 +23,6 @@ namespace W6TW4A_HFT_2023241.Logic.LogicModels
             {
                 throw new ArgumentException("Name is requiered to continue.");
             }
-            else if (item.Appearance.Length<5)
-            {
-                throw new ArgumentException("Please write a longer description of appearance.");
-            }
             else
             {
                 this.repository.Create(item);

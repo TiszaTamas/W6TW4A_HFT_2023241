@@ -29,8 +29,9 @@ namespace W6TW4A_HFT_2023241.Repository.Database
 
                 builder
                 //.UseSqlServer(conn)
+                .UseLazyLoadingProxies()
                 .UseInMemoryDatabase("adventurersguild")
-                .UseLazyLoadingProxies();
+                ;
             }
         }
 
