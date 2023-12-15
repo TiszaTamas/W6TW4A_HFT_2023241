@@ -15,6 +15,7 @@ namespace W6TW4A_HFT_2023241.Test
     {
         QuestLogic logic;
         Mock<IRepository<Quest>> mockQuestRepo;
+        Mock<IRepository<Adventurer>> mockAdventurerRepo;
 
         [SetUp]
         public void Init()

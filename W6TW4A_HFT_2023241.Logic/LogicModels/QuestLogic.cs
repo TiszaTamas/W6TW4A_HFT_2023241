@@ -19,6 +19,12 @@ namespace W6TW4A_HFT_2023241.Logic.LogicModels
             this.repository = repository;
             this.adventurerRepository = arepository;
         }
+
+        public QuestLogic(IRepository<Quest> repository)
+        {
+            this.repository = repository;
+        }
+
         public void Create(Quest item)
         {
             if (item.Objective.Length<10)
