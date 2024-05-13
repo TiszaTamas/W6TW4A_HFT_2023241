@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Adventurers</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <h1>Adventurer's tome</h1>
+
+    <div id="formdiv">
+        <label>Adventurer Name</label>
+        <input type="text" id="adventurername" />
+
+        <label>Adventurer Party Name</label>
+        <input type="text" id="adventurerparty" />
+
+        <label>Adventurer Rank</label>
+        <input type="text" id="adventurerrank" />
+        <button type="button" onclick="create()">Add Adventurer</button>
+
+    </div>
+
+    <div id="updateformdiv">
+        <label>Adventurer Name</label>
+        <input type="text" id="nameupdate" />
+
+        <label>Adventurer Party Name</label>
+        <input type="text" id="partyupdate" />
+
+        <label>Adventurer Rank</label>
+        <input type="text" id="rankupdate" />
+        <button type="button" onclick="update()">Update Advenurer</button>
+
+    </div>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Rank</th>
+                <th>Party Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="resultarea">
+        </tbody>
+    </table>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

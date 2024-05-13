@@ -1,0 +1,59 @@
+﻿table {
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+}
+
+th {
+    background-color: lightskyblue;
+}
+
+#formdiv {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+    #formdiv button, input {
+        margin-bottom: 10px;
+        padding: 5px;
+    }
+
+    #formdiv label {
+        font-weight: bolder;
+    }
+
+table button {
+    padding: 2px;
+    margin: 2px;
+}
+
+h1 {
+    margin: 20px;
+    padding: 10px;
+}
+
+#updateformdiv {
+    display:none;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+#updateformdiv button, input {
+        margin-bottom: 10px;
+        padding: 5px;
+    }
+
+#updateformdiv label {
+        font-weight: bolder;
+    }

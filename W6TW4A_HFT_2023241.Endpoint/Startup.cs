@@ -77,6 +77,13 @@ namespace W6TW4A_HFT_2023241.Endpoint
                 await context.Response.WriteAsJsonAsync(response);
             }));
 
+            app.UseCors(x => x
+                .AllowCredentials()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .WithOrigins("http://localhost:2978"));
+
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
