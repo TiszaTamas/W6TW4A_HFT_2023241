@@ -1,0 +1,39 @@
+﻿<Window x:Class="WPF_Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_Client"
+        mc:Ignorable="d"
+        Title="AdventurerEditor" Height="450" Width="800">
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox ItemsSource="{Binding Adventurers}" Grid.Column="0" SelectedItem="{Binding SelectedAdventurer}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Name}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Grid.Column="1">
+            <Label Content="Name" Background="LightCyan" Padding="2"/>
+            <TextBox Text="{Binding SelectedAdventurer.Name}" Padding="2"/>
+            <Label Content="Party Name" Background="LightCyan" Padding="2"/>
+            <TextBox Text="{Binding SelectedAdventurer.PartyName}" Padding="2"/>
+            <Label Content="Rank" Background="LightCyan" Padding="2"/>
+            <TextBox Text="{Binding SelectedAdventurer.Rank}" Padding="2"/>
+            <Label Content="Residing Town" Background="LightCyan" Padding="2"/>
+            <TextBox Text="{Binding SelectedAdventurer.ResidingTown}" Padding="2" Margin="0,0,0, 20"/>
+            <Button Content="Create Adventurer" Command="{Binding CreateAdventurerCommand}" Margin="10" Padding="10" />
+            <Button Content="Delete Adventurer" Command="{Binding DeleteAdventurerCommand}" Margin="10" Padding="10" />
+            <Button Content="Update Adventurer" Command="{Binding UpdateAdventurerCommand}" Margin="10" Padding="10" />
+            
+        </StackPanel>
+    </Grid>
+</Window>

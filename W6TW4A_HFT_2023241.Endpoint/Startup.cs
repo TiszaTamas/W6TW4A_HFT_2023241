@@ -21,6 +21,7 @@ using W6TW4A_HFT_2023241.Logic.LogicInterfaces;
 using W6TW4A_HFT_2023241.Logic.LogicModels;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Diagnostics;
+using W6TW4A_HFT_2023241.Endpoint.Services;
 
 namespace W6TW4A_HFT_2023241.Endpoint
 {
@@ -47,6 +48,8 @@ namespace W6TW4A_HFT_2023241.Endpoint
             services.AddTransient<IMarkLogic, MarkLogic>();
             services.AddTransient<IAdventurerLogic, AdventurerLogic>();
             services.AddTransient<IQuestLogic, QuestLogic>();
+
+            services.AddSignalR();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -79,6 +82,7 @@ namespace W6TW4A_HFT_2023241.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
         }
     }
